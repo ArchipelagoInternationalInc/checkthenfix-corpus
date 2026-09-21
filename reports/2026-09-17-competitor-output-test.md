@@ -1,11 +1,44 @@
-# Competitor output test — COMPLETE
-## 2026-09-17 opened · **2026-09-20 completed** · investigation only; nothing about the product changed
+# Competitor output test — COMPLETE, ALL FOUR COLUMNS
+## 2026-09-17 opened · **2026-09-20 completed and corrected** · investigation only; nothing about the product changed
 
-The owner ran the competitor's one free remediation on 2026-09-20 and supplied
-three files. All four measurements are now in. The Acrobat column remains absent.
+All four columns are filled. The Acrobat column was added on 2026-09-20 from
+outputs the owner produced with Acrobat's "Make Accessible" guided action.
 
-Findings only, no disparagement. Both outputs are good; they differ in one way
-that matters and several that do not.
+**This revision carries three corrections, one of them to a claim this report
+made in our own favour and one to a claim it made in the competitor's.** They are
+marked **CORRECTION** where they appear. Findings only, no disparagement.
+
+## The headline finding: a perfect score and a self-reported wrong reading order, in the same file
+
+The competitor's own HTML report, on the same file it scores **100/100**, says:
+
+> "Correct reading order: **False**"
+
+and
+
+> "Programmatic reading order check: reading_order_valid=false (1 of 1 pages
+> flagged for review)."
+
+Its own remediation notes repeat it. Under a criterion titled "Reading order may
+not be logical due to lack of tagging", marked **RESOLVED**, the evidence given
+is the failing check itself.
+
+So the tool flagged the only page of the document for human review, recorded that
+the reading order is not correct, and reported a perfect score anyway. **The
+score and the report contradict each other, and the score is the part the
+customer sees.**
+
+Reading order is not a minor criterion. It is the order in which a screen reader
+speaks the page — the single thing tagging exists to get right. A buyer who reads
+only the number is told the document is finished. A buyer who opens the report is
+told one of one pages needs a human.
+
+This report's earlier revision quoted their 100/100 claim and noted our validator
+agreed. **Both statements were true and both were incomplete**: our validator
+agrees the file satisfies the machine-checkable rules, and their own tooling says
+the reading order is wrong. Machine-checkable conformance and a correct reading
+order are different questions, and this file is a clean demonstration that a
+document can pass the first while failing the second.
 
 ## 1. Terms of service — the gate passes
 
@@ -49,85 +82,99 @@ app, and **nothing was purchased.**
 What the free plan permits *inside the app* is not recorded here, because that
 needs the account.
 
-## 3. Dashboard scoring-method note — NOT captured
+## 3. Dashboard scoring-method note — **CORRECTION: confirmed**
 
-The brief quotes a dashboard note about a scoring-method change on 20 July 2026,
-and earlier scores being AI estimates not comparable to newer compliance scores.
+Previously recorded here as "not captured". It is captured. Two dashboard
+screens the owner saved carry it verbatim:
 
-**Still not captured, as of 2026-09-20.** The three files the owner supplied are
-the remediated PDF, its HTML report, and the printed job page. Searched all three
-for that wording and for the date: **not present in any of them.** So this remains
-unconfirmed rather than confirmed or denied. If the note is real it substantially
-weakens any comparison against their older published numbers, which is why it is
-still worth a screenshot of the dashboard itself.
+> "Scoring method changed on Jul 20, 2026 — earlier scores are AI estimates and
+> are not directly comparable to newer compliance scores."
 
-## 4. The table — three of four columns
+This matters for how their published numbers are read. Any score of theirs from
+before 20 July 2026 is, by their own statement, an AI estimate rather than a
+compliance measurement, and not comparable with anything measured since. It has
+no bearing on the score in this report — that one was produced on 2026-09-20,
+well after the change — but it does mean their older public figures and this
+one are different kinds of number.
+
+## 4. The table — all four columns
 
 Canonical document, single page. Same validator for every column: veraPDF
-1.30.2, profile ua1 — the version and profile named on our own reports. Same
-pixel and character instrument for every column.
+1.30.2, profile ua1. Same pixel and character instrument for every column.
 
-| | our before | our after | their after | Acrobat |
+| | our before | our after | their after | **Acrobat after** |
 |---|---|---|---|---|
-| **Score (our validator)** | **42** | **100** | **100** | **absent** |
-| Tagged | no | yes | yes | — |
-| Structure tree | absent | present | present | — |
-| Structure elements | 0 | **123** | **489** | — |
-| Element mix | — | 1 Document, 1 H1, 10 H2, 111 P | 1 Document, 7 Sect, 1 H1, 4 H2, 2 H3, 2 P, 1 Figure, 1 Table, 47 TR, 1 TH, 422 TD | — |
-| Table structure | — | none | 47 rows × 9 columns, 423 cells | — |
-| — of which empty | — | — | **336 (79.4%)** | — |
-| The seal | untagged | **artifact**, no description | **Figure**, 424-character description | — |
-| Extracted text | 1,810 chars | **1,810 — identical** | **1,810 — identical** | — |
-| Page count | 1 | 1 — unchanged | 1 — unchanged | — |
-| Visual change vs original | baseline | **0.0% of pixels** | **0.0% of pixels** | — |
-| **Their own claim** | — | — | **100/100** — "70/70 machine rules, 30/30 document facts", no failures, no deductions | — |
-| What our checker says about their file | — | — | **100** — see the row above; the two agree | — |
+| **Score (our validator)** | **42** | **100** | **100** | **85** |
+| Tagged | no | yes | yes | yes |
+| Structure elements | 0 | **123** | **489** | **34** |
+| Headings | none | 1 H1, 10 H2 | 1 H1, 4 H2, 2 H3 | **none at all** |
+| Element mix | — | 1 Document, 1 H1, 10 H2, 111 P | 1 Document, 7 Sect, 1 H1, 4 H2, 2 H3, 2 P, 1 Figure, 1 Table, 47 TR, 1 TH, 422 TD | 1 Artifact, 15 P, 2 StyleSpan, 1 L, 5 LI, 5 Lbl, 5 LBody |
+| Table structure | — | none | 47 × 9, 423 cells, 336 empty | none |
+| The seal | untagged | artifact, no description | Figure + 424-character description | artifact in effect, no description |
+| Declares a standard (PDF/UA id) | no | yes | yes | **no** |
+| Document title | Word filename | corrected | corrected | **still the Word filename, and from a different month than the document** |
+| Fonts all embedded | yes | yes | yes | **no — one added, not embedded** |
+| Extracted text | 1,810 chars | 1,810 — identical | 1,810 — identical | **1,810 — identical** |
+| Page count | 1 | 1 | 1 | 1 |
+| Visual change vs original | baseline | **0.0% of pixels** | **0.0% of pixels** | **0.608% of pixels** |
+| Their own claim | — | — | **100/100** | — (no score claimed) |
 
-Neither engine moved a single pixel and neither lost a character. On the two
-things a public entity would worry about first — does my document still look the
-same, and is any text gone — the outputs are indistinguishable.
+Three engines, three answers: 100, 100, 85. Ours and the competitor's are
+pixel-identical to the original; **Acrobat is the only one that changed what the
+page looks like.**
 
-### The one difference that matters
+### What our checker found wrong with the Acrobat file
 
-Their file tags the seal as a **Figure with a 424-character description**. Ours
-marks it as an **artifact with no description at all**.
+Three failures, and each is a real defect rather than a technicality:
 
-For a reader using a screen reader, ours says nothing is there. Theirs reads out
-a paragraph. That is a real difference in what the document does for a person,
-and it is the only one in the table that a user would notice.
+- **`meta-ua-id`** — the file never says which standard it meets. A PDF/UA
+  identifier is how a consuming tool knows to trust the tagging at all.
+- **`struct-content-tagged`** — not all content is tagged or marked as
+  decoration.
+- **`text-fonts`** — **a font was added that is not embedded.** The original had
+  six fonts, all embedded; the output has those six plus an unembedded Type 1.
+  A file that was fully portable before is no longer, and that is almost
+  certainly what the 0.608% of changed pixels is.
 
-It is not simply a point in their favour. Their description is long, it is
-AI-generated (their own interface labels it "AI viewed this image", offers
-"Accept AI suggestion", and provides a "Mark decorative" button), and a
-letterhead seal repeated on every page of a long document becomes a paragraph of
-noise repeated on every page. PDF/UA permits artifacting genuinely decorative
-content, and both engines produce a conformant file. Which is better depends on
-whether that seal carries meaning a reader needs — a question about the document,
-not about either engine.
+### The PM's preview, checked point by point
 
-### Their table, and why the empty cells are worth noting
+| PM's finding | Verdict |
+|---|---|
+| 34 structure elements | **confirmed** — exactly 34 |
+| No headings at all | **confirmed** — zero H1–H6, on a document whose first line is its title |
+| No PDF/UA identifier in the metadata | **confirmed** |
+| Title still the Word file's name, from a different month | **confirmed** — in both the document information and the XMP, naming April on a May document |
+| Text recognition run on a document that already had text | **confirmed** — the action log shows OCR ran and succeeded |
+| …with the extracted count rising 1,810 → 2,543 | **CORRECTED — it did not rise.** Every extraction method gives byte-identical counts for the original and the output. The OCR ran and changed no text |
+| Seal treated as decoration | **confirmed**, with a wrinkle: the image sits inside a `Figure` marked-content region whose id is claimed by a structure element of type `Artifact`, and no alt text exists anywhere. A reader skips it, which is decoration in effect, but the file says two different things about the same image |
 
-Their 489 elements against our 123 is mostly one structure: a **47 × 9 table**,
-consistent width on every row, 423 cells, of which **336 are completely empty**
-— no children at all. 87 cells carry text; 1 cell is a header.
+Five of six confirmed exactly; one corrected. The action log also records
+"Alternate text set on 0 images", which is the same fact from Acrobat's side.
 
-A table is the right tag for tabular data and the wrong tag for page layout. Four
-hundred and twenty-three cells on a one-page agenda whose text amounts to 1,810
-characters, with four in five of them empty and exactly one header cell, is the
-shape of a **layout grid** rather than a data table. A screen-reader user
-navigating it by table commands would traverse a 47-row grid that is mostly
-nothing. Our output has no table at all, which on this document is the simpler
-answer.
+### Acrobat across six documents — the first look beyond one file
 
-Stated as a finding, not a criticism: both files satisfy the validator. The
-validator does not ask whether a table is really a table.
+Validator only, same version and profile. Before-scores for the four that are
+still corpus documents:
 
-### Counts checked independently
+| Document | before | after Acrobat |
+|---|---|---|
+| the canonical agenda | 42 | **85** |
+| a council agenda package | 42 | **71** |
+| a set of approved minutes | 38 | **71** |
+| a manager's recommended budget (507 pages) | 14 | **28** |
+| *(a professional-association document, no longer in the corpus)* | — | 47 |
+| *(a browser print capture, no longer in the corpus)* | — | 71 |
 
-The PM's figures were 489 elements, a 47 × 9 table, and 336 empty cells. All
-three reproduce exactly on our instrument. Getting there required fixing that
-instrument twice — see the correction at the end, which matters more than the
-agreement does.
+**Acrobat improved every document and finished none of them.** The gains are
+real — +43, +29, +33, +14 — and the ceiling is real too.
+
+**Three failures are universal: every one of the six is missing the PDF/UA
+identifier, has untagged content, and has a font problem.** That is not six
+documents behaving differently; it is one tool behaving the same way six times.
+
+Six documents were run rather than the five in the brief, and two of them are
+files removed from the corpus in August as not government documents. Their
+numbers are shown separately and excluded from the corpus figures.
 
 ## 5. How the missing half got done
 
@@ -143,6 +190,41 @@ output files. Scoring them needed no account, so the rest completed unattended.
 
 Their terms make this unambiguous: the remediated PDFs they generate from your
 documents are "yours to use however you like."
+
+## 5a. **CORRECTION** — their seal description is confidently wrong
+
+The previous revision called their description "the one difference that matters"
+and treated it as the place their output beats ours, with caveats about length
+and AI generation. **It did not check whether the description was true.** It has
+now been checked against the image, which was available the whole time.
+
+**The description contains five factual errors**, including the entity's own name
+— misspelled in both places it appears — along with two wrong dates, a
+misidentified central device, and a wrong motto. The peripheral ornaments it
+describes are correct; the facts that identify the entity are not. The full
+comparison is in the private corpus; nothing of the seal's contents or the
+entity's name appears here.
+
+The description is fluent, specific and confident. Nothing in its wording marks
+the invented parts as uncertain, and their interface offers "Accept AI
+suggestion" as a one-click action.
+
+This changes the comparison rather than reversing it:
+
+- **Ours says nothing about the seal.** A reader learns nothing. That is a gap.
+- **Theirs says the wrong thing in a confident voice.** A reader is told the
+  entity's name, the year it was chartered, what is at the centre of its seal and
+  what its motto means — and four of those are wrong.
+
+A gap can be noticed and filled. A confident error cannot be noticed by the
+reader who depends on it, and it is published under the entity's own name. On
+this document ours is the safer failure, and neither is good: the right answer is
+a description that is checked.
+
+It also reframes the earlier comparison of element counts. Their 489 elements
+against our 123 looked like thoroughness. The extra structure includes a
+423-cell table that is four-fifths empty and a description that is mostly wrong.
+More tagging is not more accessibility.
 
 ## 5b. Our own engine and the seal — a decision, but an unexamined one
 
@@ -185,13 +267,27 @@ last clause is the one worth the owner's attention — it is a default standing 
 for a judgement, and on a document where the image carries the entity's identity
 it is the difference between a reader being told something and being told nothing.
 
-## 6. Acrobat column — absent, as expected
+## 6. Acrobat column — **now filled**
 
-`acrobat-output/` did not exist in the private corpus at the time of this test,
-locally or on the server. Per the brief, this stops there. **The folder was not
-created.**
+On 2026-09-17 `acrobat-output/` did not exist and, per the brief, nothing was
+created. The owner produced the outputs on 2026-09-20; they are filed in the
+private corpus with Acrobat's action logs, and the column above is measured from
+them.
 
-## 7. Separate line of evidence — which database our scripts run against
+**Acrobat's own accessibility checker reports could not be collected.** The
+guided action writes each one as HTML into a system temporary directory; they
+were gone before this session looked, and nothing matching them exists in the
+owner's Documents folder or anywhere else on disk. The action logs survive and
+are filed, but they record which steps ran, not which rules passed. To keep them
+next time, save the report from Acrobat's checker panel before closing the file.
+
+## 7. Separate line of evidence — which database our scripts run against — **SUPERSEDED**
+
+> **Superseded by `2026-09-20-database-safety-gap.md`.** Everything below was
+> accurate when written and is no longer the current state: the refusal now
+> exists, development and staging point at a throwaway, and the sweep was
+> completed. Read the 20 September report instead. The text is kept because the
+> reports are a record, not a description of today.
 
 The question assumed lock-testing scripts exist. **They do not.** Nothing in the
 repository tests locking; the one file whose name suggested it is a feature-flag
@@ -226,8 +322,10 @@ only because the question was asked.
 
 ## What one document cannot determine
 
-Even with the missing columns filled, one page of one document supports very
-little:
+All four columns are now filled, and one page of one document still supports very
+little. The Acrobat column is the exception in one respect — it has six documents
+behind it, which is why the three failures common to all six are stated as a
+pattern while everything else here is not:
 
 - It cannot establish that either engine is better in general. A single agenda
   exercises headings and paragraphs. It says nothing about tables with merged
@@ -239,6 +337,11 @@ little:
   that makes no sense to a person.
 - Our own 100 is our engine scored by the validator we chose. That is a fair
   measurement and a narrow one.
+- **A score is not a reading order.** The clearest lesson in this report is at
+  the top: a file can satisfy every machine-checkable rule, score 100 from two
+  independent validators, and still have a reading order its own producer flags
+  as wrong. Our 100 is subject to exactly the same limit. We have not checked our
+  own file's reading order against a human's judgement either.
 
 Anything stronger needs the corpus, not one file.
 
