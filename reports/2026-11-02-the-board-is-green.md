@@ -113,3 +113,24 @@ deployed site, and nothing was charged. It is removed by the ordinary
 anonymous retention window, so nobody has to act. The output went to a file
 before anything read it, so the token was captured on the first run and the
 check was not re-run. The token is in the private corpus only.
+
+## 6. Found after the record: the stop hook never ran its judge here
+
+At the session's end the new stop hook refused, saying the board was red, and
+printed an all-PASS summary. The summary was stale, left over from the
+`--final` run. The hook had never started `verify.sh`: it ran the judge's
+path without quotes, and the studio checkout's path contains a space.
+
+Check 12 was green throughout. Its self-test proved that the hook refuses and
+releases using stand-in judges with no space in their names, so it could not
+see this.
+
+Fixed on the branch:
+
+- the judge is quoted;
+- the stand-in judges now live under a path with a space, and the old hook
+  fails that test (exit 2 on a green judge);
+- a summary older than the run is no longer shown; the judge's own output is.
+
+The real hook, run against the real `verify.sh` from the studio checkout:
+exit 0, checks 1 to 12 PASS. No live row. Check 13 was not re-run.
