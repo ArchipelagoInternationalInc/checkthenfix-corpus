@@ -77,13 +77,39 @@ removed:  PASS   4  tests   Tests  590 passed (590)
 Every other check was PASS in both runs. The plant was reverted from git, not
 by hand.
 
-## 4. Check 13 and 14
+## 4. Checks 13 and 14: the single `--final` run
 
-Pending at the time of writing. This report is filed **before** the single
-`--final` run, because check 14 asks for a report pushed today, and running
-`--final` first would have left 14 red on the only run allowed. Section 5 is
-filled in after that run.
+This report was first filed **before** the `--final` run. Check 14 asks for a
+report pushed today, and running `--final` first would have left 14 red on
+the only run allowed. This section was added after the run.
+
+```
+PASS  13  public path in production  7 of 7 PASS, public path scored 42 (token in .verify/13-final.log only)
+PASS  14  record filed               report c69dd66 pushed today; handoff 7900ac3; GOAL.md and DoD tracked
+
+VERIFY GREEN   (exit 0; checks 1 to 12 PASS again in the same run)
+```
+
+The deployment check's own lines, with the token removed:
+
+```
+PASS  engine health          HTTP 200 veraPDF pinned 1.30 actual 1.30.2
+PASS  auth fails closed      unauthenticated /check -> HTTP 404
+PASS  canonical 42 (local)   May agenda scored 42 (expected 42)
+PASS  deployed /             HTTP 200, superseded dates: false, corrected dates present: true
+PASS  deployed /deadline     HTTP 200, superseded dates: false, corrected dates present: true
+PASS  deployed /faq          HTTP 200, superseded dates: false, corrected dates present: true
+PASS  public path            scored 42 · token <private> (one anonymous row, self-removing)
+```
+
+**Stretch 1 is done by its own definition: checks 1 to 14 are green.** The
+items still open are all marked [NEEDS OWNER]: the merge to `main`, the price,
+and the GOAL.md section 1 and 5 questions.
 
 ## 5. Live rows
 
-Pending (see section 4).
+**One.** It was an anonymous upload of the canonical document through the
+deployed site, and nothing was charged. It is removed by the ordinary
+anonymous retention window, so nobody has to act. The output went to a file
+before anything read it, so the token was captured on the first run and the
+check was not re-run. The token is in the private corpus only.
