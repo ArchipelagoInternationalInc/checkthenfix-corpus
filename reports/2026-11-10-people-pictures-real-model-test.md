@@ -63,9 +63,9 @@ runs fixed the document: veraPDF compliant, 0 failed rules.
 | 5 officer | 1 | 115 | not confirmed: found a guess about a person | no | refused: pictures of people are left for you to describe |
 | 5 officer | 2 | 110 | did not run (guess filter refused first) | no | refused: pictures of people are left for you to describe |
 | 5 officer | 3 | 113 | did not run (guess filter refused first) | no | refused: pictures of people are left for you to describe |
-| 6 chart | 1 | 135 | not confirmed: found a guess about a person | no (skipped after a failed second look) | refused: over the 125-character limit; 7 name(s) or number(s) not found |
-| 6 chart | 2 | 129 | not confirmed: found a guess about a person | no (skipped after a failed second look) | refused: over the 125-character limit; 7 name(s) or number(s) not found |
-| 6 chart | 3 | 135 | not confirmed: found a guess about a person | no (skipped after a failed second look) | refused: over the 125-character limit; 7 name(s) or number(s) not found |
+| 6 chart | 1 | 135 | not confirmed: found a guess about a person | no (names refusal: not eligible) | refused: over the 125-character limit; 7 name(s) or number(s) not found |
+| 6 chart | 2 | 129 | not confirmed: found a guess about a person | no (names refusal: not eligible) | refused: over the 125-character limit; 7 name(s) or number(s) not found |
+| 6 chart | 3 | 135 | not confirmed: found a guess about a person | no (names refusal: not eligible) | refused: over the 125-character limit; 7 name(s) or number(s) not found |
 | 7 building | 1 | 111 | confirmed, 5 of 5, 0.99 | no | refused: 2 name(s) or number(s) not found on the image |
 | 7 building | 2 | 122 | confirmed, 5 of 5, 0.99 | no | refused: 2 name(s) or number(s) not found on the image |
 | 7 building | 3 | 121 | confirmed, 5 of 5, 0.99 | no | refused: 2 name(s) or number(s) not found on the image |
@@ -81,19 +81,25 @@ found a guess about a person or a judgment of looks".
   names check refused the draft first, because the text it named was not
   found on the image. The note gives that reason, so it does not say the
   picture shows a person. The second look did catch the person or a guess on
-  all three runs, but only the first refusal reason goes into the note. The
+  all three runs. The people check ran only on text that had passed the
+  names check, so it never ran here. (Corrected the same day: an earlier
+  version said only the first refusal reason goes into the note.) The
   owner may want the people note shown whenever a person is detected.
 - **Pictures without people: 0 of 6 described.** This misses the goal.
   - Chart, 3 of 3 refused. The drafts were 129 to 135 characters, over the
     125 limit. The names-and-numbers check could not find 7 of the drafts'
     names and numbers on the image, though the chart prints most of them. The second
-    look listed a guess on every run, so the shortening retry was skipped,
-    as the Nov 3 rule says it should be.
+    look also listed a guess on every run. No shortening retry ran because
+    the names check refused these drafts too, and a retry was then allowed
+    for length alone. (Corrected the same day: an earlier version said the
+    retry was skipped because of the failed second look. That rule never
+    applied here.)
   - Building, 3 of 3 refused, though the second look confirmed every claim
     each time (5 of 5, 0.99). The names check could not find the sign's two
     words on the image.
   - The likely common cause is that text recognition misses printed words in
-    photos and charts at this size. This was not investigated in this session.
+    photos and charts at this size. This was investigated afterwards; see
+    `2026-11-10-people-pictures-fixes-rerun.md`.
 - Shortening retry: ran 0 of 21 times. Second look: ran 19 times and
   confirmed 3, all on the building.
 
