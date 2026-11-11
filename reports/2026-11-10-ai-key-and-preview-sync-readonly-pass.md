@@ -76,3 +76,14 @@ Vercel will not accept one of the secrets as the Sensitive type. The fix means
 changing the sync's variable type or a secret's visibility. **[NEEDS OWNER]**
 Vercel Preview keeps its hand-entered values, which point at practice. The
 /review check was not run, because nothing reached Vercel.
+
+**Cause found (read-only).** Vercel holds the three `NEXT_PUBLIC_*` variables
+without the "secret" visibility, because they are public build-time values.
+The failed re-enable updated the Preview variables in alphabetical order, from
+the `BREVO_*` names through `JUDGMENT_*`, all from `stg`, and stopped at the
+first `NEXT_PUBLIC_*`. `STRIPE_WEBHOOK_SECRET`, `SUPABASE_SERVICE_ROLE_KEY`
+and the public three keep their earlier values. The fix: mark the three
+`NEXT_PUBLIC_*` values Unmasked in `stg`, and recreate the sync with the
+Dynamic type, so masked values stay Sensitive. This step was blocked by the
+session's safety check on writes to the secret store, and it is left to the
+owner. Nothing in `stg` was changed.
