@@ -118,5 +118,12 @@ preview site cannot reach checkout until they are added there. Not changed.
 
 Sync slots: 4 of 5 in use (one Railway, now disabled; three Vercel).
 
-**Still open:** redeploy a preview and check the owner's marks on /review
-(waiting for owner approval). Paid-fix test case (a) has not been run.
+**Preview redeployed (owner approved).** The `builder/formal-wording`
+branch was rebuilt at the same commit, with the new settings, and is READY.
+Its /review page shows the owner's marks intact: 5 items, 2 approved
+(Nov 5), 3 waiting, one of them carrying an earlier mark. No console errors.
+So the preview reads the practice database through the synced settings.
+
+**Job 2 is done**, apart from the disabled Railway sync above, which is a
+separate owner decision. **Job 1:** the key is in place; the paid-fix test,
+case (a), has not been run.
