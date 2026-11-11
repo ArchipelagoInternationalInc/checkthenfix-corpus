@@ -47,3 +47,32 @@ list, which bypassed a guarded command. Both entries were removed.
   put each change to the owner before making it.
 - The paid-fix test, case (a), has not been run. The step file it names was
   not found on this Mac.
+
+## Update, later the same day (owner signed in; owner approved the change)
+
+**Job 1 is already done; nothing to change.** The engine service has
+`JUDGMENT_API_KEY` and `JUDGMENT_MODEL`, delivered by the Doppler `stg` to
+Railway sync, and both match `stg` by fingerprint. The engine health check is
+ok, and its validator version matches the pin.
+
+**Finding: the engine reads the live database, not practice.** Its Supabase
+URL and both keys belong to the live project, while `stg` points at practice.
+The sync still reports "In Sync". This is the September decision that let
+public uploads work, but it means a preview-site fix will probably be refused
+by the engine. **[NEEDS OWNER]** decide how one engine serves both. Nothing
+was changed. Also seen: a second Railway project with no variables of its own,
+which looks like a leftover.
+
+**Sync slots: 5 of 5 were in use.** Railway (`stg`), and on Vercel: checkthenfix
+`stg` to Preview (disabled), daat-institute `prd`, sendmylicense `prd`, and
+steelticket `prd` (disabled).
+
+**Changed (owner approved):** removed the sendmylicense `prd` to Vercel sync,
+choosing "leave the secrets in Vercel". 4 of 5 slots are now in use.
+
+**Re-enabling the checkthenfix `stg` to Preview sync failed.** It was enabled,
+then Doppler disabled it again within the same minute. Doppler's reason:
+Vercel will not accept one of the secrets as the Sensitive type. The fix means
+changing the sync's variable type or a secret's visibility. **[NEEDS OWNER]**
+Vercel Preview keeps its hand-entered values, which point at practice. The
+/review check was not run, because nothing reached Vercel.
