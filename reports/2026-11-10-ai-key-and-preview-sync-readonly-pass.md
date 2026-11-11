@@ -87,3 +87,36 @@ and the public three keep their earlier values. The fix: mark the three
 Dynamic type, so masked values stay Sensitive. This step was blocked by the
 session's safety check on writes to the secret store, and it is left to the
 owner. Nothing in `stg` was changed.
+
+## Update, 10:15 PM onward (owner said "You do it")
+
+**Changed (owner approved):**
+
+- In `stg`, the three `NEXT_PUBLIC_*` values are now Unmasked. They are
+  public by design. Only `stg` was saved; `dev` and `prd` were not touched.
+- The old disabled `stg` to Vercel Preview sync was removed, choosing "leave
+  the secrets in Vercel". A new one was created: `stg` to checkthenfix
+  Preview, all preview branches, **Dynamic** type, Doppler as the source.
+  Status: **In Sync**. Vercel confirms that every Preview variable was
+  rewritten from `stg`. The three public values are plain, and the rest are
+  Sensitive. Two names that were missing before now exist in Preview
+  (`SUPABASE_THROWAWAY_URL`, `VERAPDF_PATH`). Production variables were not
+  touched; their last change is from September.
+
+**New finding: the Railway sync is disabled.** Doppler turned it off at the
+moment of the `stg` save. Its stated reason is that it is "unable to
+authenticate with Railway", so the connection's credential has lapsed. This
+was not caused by the visibility change itself. The engine is unaffected:
+its variable names are unchanged, it still points at the live database, the
+AI key is present, health is ok, and there has been no redeploy since Nov 4.
+**[NEEDS OWNER]** Before reconnecting the sync, decide the database question
+above. A working sync would push the practice database settings over the
+engine's live ones, and that would break public uploads.
+
+**Also seen:** Preview has no Stripe keys from `stg`. A paid fix on the
+preview site cannot reach checkout until they are added there. Not changed.
+
+Sync slots: 4 of 5 in use (one Railway, now disabled; three Vercel).
+
+**Still open:** redeploy a preview and check the owner's marks on /review
+(waiting for owner approval). Paid-fix test case (a) has not been run.
