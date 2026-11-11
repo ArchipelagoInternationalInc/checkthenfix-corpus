@@ -51,7 +51,7 @@ descriptions.
 | Children ×3 | 0 of 3 | people reason | none | guess 3 |
 | Medical ×3 | 0 of 3 | people reason | none | person 3 |
 | Officer ×3 | 0 of 3 | people reason | none | guess 2, did not run 1 |
-| Chart ×3 | 0 of 3 | length, 2 numbers not found | ran 2, skipped 1 | confirmed 2 (4 of 4, 0.99), guess 1 |
+| Chart ×3 | 0 of 3 | length, 2 numbers not found | ran 2 (harness fault, see below), skipped 1 | confirmed 2 (4 of 4, 0.99), guess 1 |
 | Building ×3 | 0 of 3 | "it describes a person" (wrongly), 2 names not found | none | confirmed 3 (5 of 5, 7 of 7, 5 of 5; 0.99) |
 
 - **Pictures of people: 15 of 15 refused, and all 15 notes lead with the
@@ -62,9 +62,13 @@ descriptions.
   - **Chart:**
     - The reader now finds the title and the values.
     - Two years printed sideways on the axis are still unread.
-    - The retry ran twice. On a separate probe, both answers removed the
-      years and added two words of their own, so the deletion guard refused
-      them as designed. Those answers were not captured in the runs.
+    - The retry ran twice, but **not as designed** (corrected Nov 11). The
+      test harness wrapped the retry call and dropped the list of words to
+      remove, so the model got the old "shorten it" request. Those two
+      results do not test the new retry. On a separate probe that did send
+      the words, both answers removed the years and added two words of their
+      own, so the deletion guard refused them. The people runs had no retries
+      and were not affected.
   - **Building:** the person-word check counts "Visitor" as a person, so
     every draft quoting the sign "Visitor Center" is refused as describing
     a person.
@@ -89,3 +93,5 @@ descriptions.
 
 No rows were written and no servers were started. Each run's output folder was
 deleted when the run ended.
+
+Follow-up: `2026-11-11-people-pictures-sign-words.md`.
