@@ -127,3 +127,17 @@ So the preview reads the practice database through the synced settings.
 **Job 2 is done**, apart from the disabled Railway sync above, which is a
 separate owner decision. **Job 1:** the key is in place; the paid-fix test,
 case (a), has not been run.
+
+## Owner decisions, later on Nov 10
+
+- **Database:** the engine stays on the live database. The paid-fix test will
+  run later on the real domain behind a password, not on the preview.
+- **Railway sync:** stays off. Not reconnected.
+- **Leftover Railway project:** delete only if it is empty. **It is not
+  empty, so nothing was deleted.** It holds one service with a successful
+  deployment from Nov 4, plus four removed ones, the earliest from Aug 25.
+  The deploy times match the engine's own deploys to the second. The service
+  has no variables of its own and no public address. **[NEEDS OWNER]**
+  decide whether to delete it anyway.
+
+Nothing else was changed.
