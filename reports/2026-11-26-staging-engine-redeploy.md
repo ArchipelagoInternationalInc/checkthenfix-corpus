@@ -1,4 +1,4 @@
-# Test engine updated; one of two file checks done
+# Test engine updated; both file checks pass
 ## 2026-11-26 · Studio Mac session
 
 The owner approved this on Nov 25: update the **test** scanning engine only.
@@ -19,15 +19,15 @@ The live engine was not touched.
 | File | Expected | Result |
 |---|---|---|
 | 01-simple-text (a short page of real text) | "Real text, not scanned images" reads Yes; score no longer 38 | **PASS.** Reads Yes; score 50 |
-| 06-password-open (a password-protected file) | Page says the file is password-protected | **NOT RUN.** The upload was refused by this session's permission check; waiting for the owner |
+| 06-password-open (a password-protected file) | Page says the file is password-protected | **PASS.** Page says the file is password-protected and how to remove it; nothing scored (run on the owner's go-ahead after a first attempt was refused) |
 
 Test files are the rebuilt Nov 19 break-it set (made-up words only), as
 committed in the app repository.
 
 ## Rows created
 
-One upload, anonymous, on the preview site, which points at the practice
-database. Nothing was charged. It deletes itself after the 72-hour window.
+Two uploads, anonymous, on the preview site, which points at the practice
+database. Nothing was charged. They delete themselves after the 72-hour window.
 
 ## Findings for a builder (not fixed here)
 
